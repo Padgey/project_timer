@@ -364,6 +364,20 @@ h2 {
 }
 
 
+#breakPrompt {
+    margin: 5px;
+    font-size: 3rem;
+}
+
+#countdownControls {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#breakPromptStart, #breakPromptPause, #breakPromptReset {
+    font-size: 1rem;
+}
+
 
 
 

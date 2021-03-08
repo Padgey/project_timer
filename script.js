@@ -19,7 +19,84 @@ function setTitle() {
     document.title = timeToString(sElapsedTime + sTotalTime)
 };
 
+//Break prompt
+const breakPromptDiv = document.getElementById("breakPrompt");
+const countdownErrorDiv = document.getElementById("countdownError");
 
+let initialTimeToPrompt = 12000; //20 minutes - 1000*60*20
+let totalTimeToPrompt = initialTimeToPrompt;
+let countdownStatus = "Stopped";
+let countdownStartTime;
+let countdownElapsed = 0;
+let countdownInterval;
+let timeToPrompt;
+
+breakPromptDiv.innerText = timeToString(initialTimeToPrompt);
+countdownErrorDiv.innerText = countdownStatus;
+
+
+function countdownPrint(txt) {
+    if (timeToPrompt > 0) {
+        breakPromptDiv.innerText = txt;
+    } else {
+        breakPromptDiv.innerText = "Time to stretch and rest your eyes!"
+    }
+    
+}
+
+function countdownTimer() {
+    if (countdownStatus === "Stopped") {
+        countdownStartTime = Date.now();
+        countdownStatus = "Running";
+        countdownErrorDiv.innerText = countdownStatus;
+        countdownInterval = setInterval(function countdownTimer() {
+            countdownElapsed = Date.now() - countdownStartTime;
+            timeToPrompt = totalTimeToPrompt - countdownElapsed;
+            countdownPrint(timeToString(timeToPrompt));
+        }, 100);
+    } else if (countdownStatus === "Running") {
+        countdownErrorDiv.innerText = "Cannot start timer which is already running";
+        setTimeout(() => {
+            countdownErrorDiv.innerText = countdownStatus;
+        }, 1500);
+    } else {
+        countdownErrorDiv.innerText = "This error should not appear!";
+    }
+   
+};
+
+function countdownPause() {
+    clearInterval(countdownInterval);
+    countdownStatus = "Stopped";
+    countdownErrorDiv.innerText = countdownStatus;
+    totalTimeToPrompt = totalTimeToPrompt - countdownElapsed;
+    countdownElapsed = 0;
+};
+
+function countdownStop() {
+    clearInterval(countdownInterval);
+    countdownStatus = "Stopped";
+    countdownErrorDiv.innerText = countdownStatus;
+    totalTimeToPrompt = totalTimeToPrompt - countdownElapsed;
+    countdownElapsed = 0;
+};
+
+function countdownReset() {
+    clearInterval(countdownInterval);
+    countdownStatus = "Stopped";
+    countdownErrorDiv.innerText = countdownStatus;
+    totalTimeToPrompt = initialTimeToPrompt;
+    countdownElapsed = 0;
+    countdownPrint(timeToString(totalTimeToPrompt));
+}
+
+const breakPromptStart = document.getElementById("breakPromptStart");
+const breakPromptPause = document.getElementById("breakPromptPause");
+const breakPromptReset = document.getElementById("breakPromptReset");
+
+breakPromptStart.addEventListener("click", countdownTimer);
+breakPromptPause.addEventListener("click", countdownPause);
+breakPromptReset.addEventListener("click", countdownReset);
 
 //Study stopwatch
 const sTotalTimer = document.getElementById("study_total_text");
@@ -41,12 +118,13 @@ function sTotalPrint(txt) {
 
 function sStart() {
     sStartTime = Date.now() - sElapsedTime;
+    
     sTimerInterval = setInterval(function printTime() {
         sElapsedTime = Date.now() - sStartTime;
         sPrint(timeToString(sElapsedTime));
         sTotalPrint(timeToString(sTotalTime + sElapsedTime));
         setTitle();
-    }, 1000);
+    }, 100);
 };
 
 function sPause() {
@@ -133,7 +211,7 @@ function pStart() {
         pPrint(timeToString(pElapsedTime));
         pTotalPrint(timeToString(pTotalTime + pElapsedTime));
         setTitle();
-    }, 1000);
+    }, 100);
 };
 
 function pPause() {
@@ -225,7 +303,7 @@ function bStart() {
         bPrint(timeToString(bElapsedTime));
         bTotalPrint(timeToString(bTotalTime + bElapsedTime));
         setTitle();
-    }, 1000);
+    }, 100);
 };
 
 function bPause() {
@@ -330,6 +408,7 @@ const startProcrastination = () => {
     pStart();
 }
 
+
 startProcrastinationButton.onclick = function() {
     startProcrastination()
 }
@@ -341,18 +420,24 @@ const startBreak = () => {
     bStart();
 }
 
+
 startBreakButton.onclick = function() {
     startBreak()
 }
 
 
+
+
+
+
+
 //JS testing - Making sure JS file is working correctly
 
 
-/*
-startStudy.onclick = function() {
+
+startStudyButton.onclick = function() {
     startStudy.style.backgroundColor = 'red';
-}*/
+}
 
 
 
