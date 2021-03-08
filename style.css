@@ -363,6 +363,15 @@ h2 {
     border-top: 0.75px solid rgba(0, 0, 0, 1);
 }
 
+/*Countdown Controls*/
+#displayControls {
+    position: absolute;
+}
+
+#countdownDiv, #countdownErrorDiv {
+    display: none;
+}
+
 
 #breakPrompt {
     margin: 5px;
@@ -377,6 +386,8 @@ h2 {
 #breakPromptStart, #breakPromptPause, #breakPromptReset {
     font-size: 1rem;
 }
+
+
 
 
 

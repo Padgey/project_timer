@@ -19,9 +19,38 @@ function setTitle() {
     document.title = timeToString(sElapsedTime + sTotalTime)
 };
 
-//Break prompt
+const showCountdownButton = document.getElementById("showCountdownButton");
+const showDebugButton = document.getElementById("showDebugButton");
 const breakPromptDiv = document.getElementById("breakPrompt");
-const countdownErrorDiv = document.getElementById("countdownError");
+const countdownDiv = document.getElementById("countdownDiv");
+const countdownErrorDiv = document.getElementById("countdownErrorDiv");
+
+countdownDiv.style.display = "none";
+
+//Display Controls
+function showCountdown() {
+    if (countdownDiv.style.display === "none") {
+        countdownDiv.style.display = "block"
+    } else {
+        countdownDiv.style.display = "none"
+    }
+};
+
+function showDebug() {
+    if (countdownErrorDiv.style.display === "none") {
+        countdownErrorDiv.style.display = "block"
+    } else {
+        countdownErrorDiv.style.display = "none"
+    }
+}
+
+showCountdownButton.addEventListener("click", showCountdown);
+showDebugButton.addEventListener("click", showDebug);
+
+
+
+//Break prompt
+
 
 let initialTimeToPrompt = 12000; //20 minutes - 1000*60*20
 let totalTimeToPrompt = initialTimeToPrompt;
@@ -41,7 +70,6 @@ function countdownPrint(txt) {
     } else {
         breakPromptDiv.innerText = "Time to stretch and rest your eyes!"
     }
-    
 }
 
 function countdownTimer() {
@@ -98,6 +126,7 @@ breakPromptStart.addEventListener("click", countdownTimer);
 breakPromptPause.addEventListener("click", countdownPause);
 breakPromptReset.addEventListener("click", countdownReset);
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 //Study stopwatch
 const sTotalTimer = document.getElementById("study_total_text");
 const sCurrentTimer = document.getElementById("study_current_text");
@@ -176,16 +205,7 @@ sSubtractMinuteButton.addEventListener("click", sSubtractMinute);
 
 
 
-
-
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////
 //Procrastination stopwatch
 const pTotalTimer = document.getElementById("procrastination_total_text");
 const pCurrentTimer = document.getElementById("procrastination_current_text");
@@ -262,22 +282,7 @@ function pSubtractMinute() {
 pSubtractMinuteButton.addEventListener("click", pSubtractMinute);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////
 //Break stopwatch
 const bTotalTimer = document.getElementById("break_total_text");
 const bCurrentTimer = document.getElementById("break_current_text");
@@ -352,39 +357,7 @@ function bSubtractMinute() {
 
 bSubtractMinuteButton.addEventListener("click", bSubtractMinute);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////////
 //Bottom button functions
 const startStudyButton = document.getElementById('start_study');
 const startProcrastinationButton = document.getElementById('start_procrastination');
@@ -430,14 +403,14 @@ startBreakButton.onclick = function() {
 
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////
 //JS testing - Making sure JS file is working correctly
 
-
-
+/*
 startStudyButton.onclick = function() {
     startStudy.style.backgroundColor = 'red';
 }
+*/
 
 
 
