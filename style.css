@@ -1,0 +1,514 @@
+/* 04080F  507DBC   A1C6EA   BBD1EA   DAE3E5   Colour Scheme*/
+
+/*To do - 
+    Restructure #id and .classes into a format that makes more sense without breaking functionaility.
+    Resize on smaller screens.
+*/
+
+
+
+
+/*General settings*/
+body {
+    background-color: #04080F;
+    color: #DAE3E5;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+
+
+
+/*Header*/
+h1 {
+    width: 30%;
+    color: #DAE3E5;
+    margin: 2px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+
+
+
+/*All timers*/
+#timers_container {
+    width: 100%;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
+
+
+
+
+/*Study Timer*/
+#study {
+    display: flex;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#stimers {
+    display: flex;
+    width: 65%;
+    z-index: 3;
+}
+
+#study_total, #study_current {
+    padding: 10px 25px;
+    width: 50%;
+    background-color: #507DBC;
+}
+
+#study_total {
+    border-right: 0.5px solid black;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#study_current {
+    border-right: 1px solid black
+}
+
+
+#study_total p, #study_current p{
+    display: inline;
+    font-size: 3rem;
+}
+
+#sbuttons {
+    display: flex;
+    width: 35%;
+    font-size: 1.5rem;
+    align-items: center;
+    background-color: #507DBC;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index: 3;
+}
+
+#sbuttons img {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#study_play, #study_pause, #study_reset {
+    margin: 0 auto;
+    border: 5px solid rgba(0, 0, 0, 1);
+    border-radius: 0px;
+    max-height: 15px;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+/*Procrastination timer*/
+
+#procrastination {
+    display: flex;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#ptimers {
+    display: flex;
+    width: 65%;
+    z-index: 3;
+}
+
+#procrastination_total, #procrastination_current {
+    padding: 10px 25px;
+    width: 50%;
+    background-color: #ec4c4c;
+}
+
+#procrastination_total {
+    border-right: 0.5px solid black;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#procrastination_current {
+    border-right: 1px solid black
+}
+
+
+#procrastination_total p, #procrastination_current p{
+    display: inline;
+    font-size: 3rem;
+}
+
+#pbuttons {
+    display: flex;
+    width: 35%;
+    font-size: 1.5rem;
+    align-items: center;
+    background-color: #ec4c4c;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index: 3;
+}
+
+#pbuttons img {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#procrastination_play, #procrastination_pause, #procrastination_reset {
+    margin: 0 auto;
+    border: 5px solid rgba(0, 0, 0, 1);
+    border-radius: 0px;
+    max-height: 15px;
+    width: auto;
+}
+
+
+
+
+/*Break Timer*/
+#break {
+    display: flex;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#btimers {
+    display: flex;
+    width: 65%;
+    z-index: 3;
+}
+
+#break_total, #break_current {
+    padding: 10px 25px;
+    width: 50%;
+    background-color: #50bc5e;
+}
+
+#break_total {
+    border-right: 0.5px solid black;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#break_current {
+    border-right: 1px solid black
+}
+
+
+#break_total p, #break_current p{
+    display: inline;
+    font-size: 3rem;
+}
+
+#bbuttons {
+    display: flex;
+    width: 35%;
+    font-size: 1.5rem;
+    align-items: center;
+    background-color: #50bc5e;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index: 3;
+}
+
+#bbuttons img {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#break_play, #break_pause, #break_reset {
+    margin: 0 auto;
+    border: 5px solid rgba(0, 0, 0, 1);
+    border-radius: 0px;
+    max-height: 15px;
+    width: auto;
+}
+
+
+
+
+
+
+
+/*Start buttons*/
+
+#start_buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#start_study, #start_procrastination, #start_break {
+    padding: 15px;
+    margin: 40px 10px;
+    font-size: 2rem;
+    max-width: 265px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+#start_study {
+    background-color: #507DBC;
+}
+
+#start_procrastination {
+    background-color: #ec4c4c;
+}
+
+#start_break {
+    background-color: #50bc5e
+}
+
+
+/*Plus & minus minute buttons*/
+
+/*Study Plus&Minus Buttons*/
+#spmbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    left: 88%;
+}
+
+#splus_one_study, #sminus_one_study {
+    cursor: pointer;
+    padding: 10px 5px 10px 40px;
+    background-color: #29528b;
+    border-radius: 10px;
+    pointer-events: auto;
+    height: 16px;
+}
+
+#splus_one_study {
+    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
+}
+
+#sminus_one_study {
+    border-top: 0.75px solid rgba(0, 0, 0, 1);
+}
+
+
+
+/*Procrastination Plus&Minus Buttons*/
+#ppmbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    left: 88%;
+}
+
+#pplus_one_study, #pminus_one_study {
+    cursor: pointer;
+    padding: 10px 5px 10px 40px;
+    background-color: #7e2929;
+    border-radius: 10px;
+    pointer-events: auto;
+    height: 16px;
+}
+
+#pplus_one_study {
+    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
+}
+
+#pminus_one_study {
+    border-top: 0.75px solid rgba(0, 0, 0, 1);
+}
+
+
+
+/*Break Plus&Minus Buttons*/
+#bpmbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    left: 88%;
+}
+
+#bplus_one_study, #bminus_one_study {
+    cursor: pointer;
+    padding: 10px 5px 10px 40px;
+    background-color: #0a802a;
+    border-radius: 10px;
+    pointer-events: auto;
+    height: 16px;
+}
+
+
+#bplus_one_study {
+    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
+}
+
+#bminus_one_study {
+    border-top: 0.75px solid rgba(0, 0, 0, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Small screen adjustments*/
+@media screen and (max-width : 1000px) {
+    html {
+    font-size: 10px;
+    }
+    h2 {
+        margin-top: 8px;
+        margin-bottom: 2px;
+    }
+    #study_play, #study_pause, #study_reset, #procrastination_play, #procrastination_pause, #procrastination_reset, #break_play, #break_pause, #break_reset {
+        border-radius: 0px; 
+        border: 5px solid rgba(0, 0, 0, 1);
+    }
+    #study_total, #procrastination_total, #break_total {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    #sbuttons, #pbuttons, #bbuttons {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    #sbuttons i, #pbuttons i, #bbuttons i {
+        padding: 10px;
+    }
+    #start_study, #start_procrastination, #start_break {
+        padding: 10px;
+        margin: 40px 10px;
+        height: 25px;
+        border-radius: 0px;
+    }
+    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+        padding: 5px 5px 5px 30px;
+        border-radius: 0px;
+    }
+}
+
+@media screen and (max-width : 700px) {
+    html {
+    font-size: 8px;
+    }
+    h2 {
+        margin-top: 8px;
+        margin-bottom: 2px;
+    }
+    #study_play, #study_pause, #study_reset, #procrastination_play, #procrastination_pause, #procrastination_reset, #break_play, #break_pause, #break_reset {
+        border: 4px solid rgba(0, 0, 0, 1);
+    }
+    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+        padding: 3px 5px 3px 30px;
+    }
+    #splus_one_study, #pplus_one_study, #bplus_one_study  {
+        border-bottom: 1.5px solid rgba(0, 0, 0, 1);
+    }
+    #sminus_one_study, #pminus_one_study, #bminus_one_study {
+        border-top: 1.5px solid rgba(0, 0, 0, 1);
+    }
+}
+
+@media screen and (max-width : 540px) {
+    html {
+        font-size: 6px;
+    }
+    h1 {
+        display: none;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    #study, #procrastination, #break {
+        max-width: 90%;
+    }   
+    #sbuttons i, #pbuttons i, #bbuttons i {
+        padding: 5px;
+    }
+    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+        padding: 2px 5px 1px 35px;
+    }
+    #splus_one_study, #pplus_one_study, #bplus_one_study  {
+        border-bottom: 2px solid rgba(0, 0, 0, 1);
+    }
+    #sminus_one_study, #pminus_one_study, #bminus_one_study {
+        border-top: 2px solid rgba(0, 0, 0, 1);
+    }
+    #start_study, #start_procrastination, #start_break {
+        padding: 2px;
+        margin: 10px 5px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-height : 425px) {
+    html {
+        font-size: 6px;
+    }
+    h1 {
+        display: none;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    #study, #procrastination, #break {
+        max-width: 90%;
+    }   
+    #sbuttons i, #pbuttons i, #bbuttons i {
+        padding: 5px;
+    }
+    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+        padding: 0px 5px 0px 35px;
+    }
+    #splus_one_study, #pplus_one_study, #bplus_one_study  {
+        border-bottom: 2px solid rgba(0, 0, 0, 1);
+    }
+    #sminus_one_study, #pminus_one_study, #bminus_one_study {
+        border-top: 2px solid rgba(0, 0, 0, 1);
+    }
+    #start_study, #start_procrastination, #start_break {
+        padding: 2px;
+        margin: 10px 5px;
+        height: 20px;
+    }
+}
