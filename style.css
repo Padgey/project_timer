@@ -387,6 +387,19 @@ h2 {
     font-size: 1rem;
 }
 
+#breakPromptStart {
+    background-color: #507DBC;
+}
+
+#breakPromptPause {
+    background-color: #ec4c4c;
+}
+
+#breakPromptReset {
+    background-color: #50bc5e;
+}
+
+
 
 
 
