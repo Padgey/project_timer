@@ -52,7 +52,7 @@ showDebugButton.addEventListener("click", showDebug);
 //Break prompt
 
 
-let initialTimeToPrompt = 12000; //20 minutes - 1000*60*20
+let initialTimeToPrompt = 1200000; //20 minutes - 1000*60*20
 let totalTimeToPrompt = initialTimeToPrompt;
 let countdownStatus = "Stopped";
 let countdownStartTime;
