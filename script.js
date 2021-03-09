@@ -114,6 +114,7 @@ function countdownReset() {
     countdownStatus = "Stopped";
     countdownErrorDiv.innerText = countdownStatus;
     totalTimeToPrompt = initialTimeToPrompt;
+    timeToPrompt = initialTimeToPrompt;
     countdownElapsed = 0;
     countdownPrint(timeToString(totalTimeToPrompt));
 }
