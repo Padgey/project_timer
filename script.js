@@ -21,11 +21,14 @@ function setTitle() {
 
 const showCountdownButton = document.getElementById("showCountdownButton");
 const showDebugButton = document.getElementById("showDebugButton");
+const showToDoButton = document.getElementById("showToDoButton");
 const breakPromptDiv = document.getElementById("breakPrompt");
 const countdownDiv = document.getElementById("countdownDiv");
 const countdownErrorDiv = document.getElementById("countdownErrorDiv");
+const toDoDiv = document.getElementById("toDo");
 
 countdownDiv.style.display = "none";
+toDoDiv.style.display = "none"; //To-Do list not displayed by default
 
 //Display Controls
 function showCountdown() {
@@ -44,8 +47,17 @@ function showDebug() {
     }
 }
 
+function showToDo() {
+    if (toDoDiv.style.display === "none") {
+        toDoDiv.style.display = "block"
+    } else {
+        toDoDiv.style.display = "none"
+    }
+}
+
 showCountdownButton.addEventListener("click", showCountdown);
 showDebugButton.addEventListener("click", showDebug);
+showToDoButton.addEventListener("click", showToDo);
 
 
 
@@ -400,8 +412,43 @@ startBreakButton.onclick = function() {
 }
 
 
+///////////////////////////////////////////////////////////////////////////
+const toDoLi = document.getElementById('toDoLi');
 
+function addNewElement() {
+    let li = document.createElement("li");
+    let inputValue = document.getElementById("inputToDo").value;
+    let textNode = document.createTextNode(inputValue);
+    
+    li.appendChild(textNode);
+    if (inputValue === '') {
+        alert('Write something!');
+    } else {
+        document.getElementById('displayToDo').appendChild(li)
+    };
+    document.getElementById("inputToDo").value = '';
 
+    let span = document.createElement("SPAN");
+    let x = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(x);
+    li.appendChild(span);
+
+    const close = document.getElementsByClassName("close");
+    let i;
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            let div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+}
+
+document.querySelector('#inputToDo').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      addNewElement()
+    }
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
