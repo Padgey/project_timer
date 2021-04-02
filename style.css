@@ -364,10 +364,20 @@ h2 {
     border-top: 0.75px solid rgba(0, 0, 0, 1);
 }
 
-/*Countdown Controls*/
+/*Display Controls*/
 #displayControls {
-    position: absolute;
+    width: 100%;
 }
+
+#showCountdownButton, #showToDoButton {
+    float: left;
+}
+
+#showDebugButton {
+    float: right;
+}
+
+/*Countdown Controls*/
 
 #countdownDiv, #countdownErrorDiv {
     display: none;
