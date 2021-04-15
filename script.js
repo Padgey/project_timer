@@ -147,6 +147,7 @@ const sCurrentTimer = document.getElementById("study_current_text");
 let sStartTime;
 let sElapsedTime = 0;
 let sTimerInterval;
+let sTimeLeft = 18000000;
 let sTotalTime = 0;
 
 
@@ -164,7 +165,7 @@ function sStart() {
     sTimerInterval = setInterval(function printTime() {
         sElapsedTime = Date.now() - sStartTime;
         sPrint(timeToString(sElapsedTime));
-        sTotalPrint(timeToString(sTotalTime + sElapsedTime));
+        sTotalPrint(timeToString(sTimeLeft - sElapsedTime));
         setTitle();
     }, 100);
 };
@@ -176,7 +177,7 @@ function sPause() {
 function sReset() {
     clearInterval(sTimerInterval);
     sPrint("00:00:00");
-    sTotalTime = sTotalTime + sElapsedTime;
+    sTotalTime = sTimeLeft -= sElapsedTime;
     sTotalPrint(timeToString(sTotalTime));
     sElapsedTime = 0;
 };
@@ -195,8 +196,8 @@ sResetButton.addEventListener("click", sReset);
 const sAddMinuteButton = document.getElementById("splus_one_study");
 
 function sAddMinute() {
-    sTotalTime = sTotalTime + 60000;
-    sTotalPrint(timeToString(sTotalTime));
+    sTimeLeft = sTimeLeft - 60000;
+    sTotalPrint(timeToString(sTimeLeft));
 };
 
 sAddMinuteButton.addEventListener("click", sAddMinute);
@@ -205,12 +206,8 @@ sAddMinuteButton.addEventListener("click", sAddMinute);
 const sSubtractMinuteButton = document.getElementById("sminus_one_study");
 
 function sSubtractMinute() {
-    if (sTotalTime >= 60000) {
-    sTotalTime = sTotalTime - 60000;
-    } else {
-        sTotalTime = 0
-    };
-    sTotalPrint(timeToString(sTotalTime));
+    sTimeLeft = sTimeLeft + 60000;
+    sTotalPrint(timeToString(sTimeLeft));
 };
 
 sSubtractMinuteButton.addEventListener("click", sSubtractMinute);
