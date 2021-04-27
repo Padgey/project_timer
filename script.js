@@ -146,7 +146,7 @@ const sCurrentTimer = document.getElementById("study_current_text");
 let sStartTime;
 let sElapsedTime = 0;
 let sTimerInterval;
-let sTimeLeft = 18000000;
+let sTimeLeft;
 let sTotalTime = 0;
 
 
@@ -164,7 +164,7 @@ function sStart() {
     sTimerInterval = setInterval(function printTime() {
         sElapsedTime = Date.now() - sStartTime;
         sPrint(timeToString(sElapsedTime));
-        sTotalPrint(timeToString(sTimeLeft - sElapsedTime));
+        sTotalPrint(timeToString(sTotalTime + sElapsedTime));
         setTitle();
     }, 100);
 };
@@ -176,7 +176,7 @@ function sPause() {
 function sReset() {
     clearInterval(sTimerInterval);
     sPrint("00:00:00");
-    sTotalTime = sTimeLeft -= sElapsedTime;
+    sTotalTime = sTotalTime + sElapsedTime;
     sTotalPrint(timeToString(sTotalTime));
     sElapsedTime = 0;
 };
