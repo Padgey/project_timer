@@ -1,114 +1,112 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+  <link href="./style.css" type="text/css" rel="stylesheet">
+  <!--<script src="https://kit.fontawesome.com/dbc33ffd90.js" crossorigin="anonymous"></script>-->
+  <title>Phil's Timer</title>        
+</head>
+<body>
+  <div id="overall_container">
 
-    <head>
-        <link href="./style.css" type="text/css" rel="stylesheet">
-        <!--<script src="https://kit.fontawesome.com/dbc33ffd90.js" crossorigin="anonymous"></script>-->
-        <title>Phil's Timer</title>
+    <div id="displayControls">
+      <button id="showCountdownButton">Show Countdown Timer</button>
+      <button id="showToDoButton">Show To-Do Panel</button>
+      <button id="showStudyCountdown">Set Study Countdown</button>
+      <div id="studyCountdownDiv">
+        <form>
+          <input type="text">
+          <input type="submit">
+        </form>
+      </div>
+    </div>
+
+    <div id="timers_container"> 
+
+      <h2>Study</h2>
+      <div id="study">
+        <div id="stimers">
+          <div id="study_total"><p id="study_total_text">05:00:00</p></div>
+          <div id="study_current"><p id="study_current_text">00:00:00</p></div>
+        </div>
+        <div id="sbuttons">
+          <img id="study_play" src='./icons/play-solid.svg'/>
+          <img id="study_pause" src='./icons/pause-solid.svg'/>
+          <img id="study_reset" src='./icons/redo-solid.svg'/>
+        </div>
+        <div id="spmbuttons">
+          <img id="splus_one_study" src='./icons/plus-square-regular.svg'/>
+          <img id="sminus_one_study" src='./icons/minus-square-regular.svg'/>
+        </div>
+      </div>
+    
+      <h2>Procrastination</h2>
+      <div id="procrastination">
+        <div id="ptimers">
+          <div id="procrastination_total"><p id="procrastination_total_text">00:00:00</p></div>
+          <div id="procrastination_current"><p id="procrastination_current_text">00:00:00</p></div>
+        </div>
+        <div id="pbuttons">
+          <img id="procrastination_play" src='./icons/play-solid.svg'/>
+          <img id="procrastination_pause" src='./icons/pause-solid.svg'/>
+          <img id="procrastination_reset" src='./icons/redo-solid.svg'/>
+        </div>
+        <div id="ppmbuttons">
+          <img id="pplus_one_study" src='./icons/plus-square-regular.svg'/>
+          <img id="pminus_one_study" src='./icons/minus-square-regular.svg'/>
+        </div>
+      </div>
+    
+      <h2>Break</h2>
+      <div id="break">
+        <div id="btimers">
+          <div id="break_total"><p id="break_total_text">00:00:00</p></div>
+          <div id="break_current"><p id="break_current_text">00:00:00</p></div>
+        </div>
+        <div id="bbuttons">
+          <img id="break_play" src='./icons/play-solid.svg'/>
+          <img id="break_pause" src='./icons/pause-solid.svg'/>
+          <img id="break_reset" src='./icons/redo-solid.svg'/>
+        </div>
+        <div id="bpmbuttons">
+          <img id="bplus_one_study" src='./icons/plus-square-regular.svg'/>
+          <img id="bminus_one_study" src='./icons/minus-square-regular.svg'/>
+        </div>
+      </div>
+    
+      <div id="start_buttons">
+        <div id="start_study">Start Study</div>
+        <div id="start_procrastination">Start Procrastination</div>
+        <div id="start_break">Start Break</div>
+      </div>
+    
+      <div id="countdownDiv">
+        <div id="breakPrompt"></div>
+        <div id="countdownControls">
+          <button id="breakPromptStart">Start Countdown</button>
+          <button id="breakPromptPause">Pause Countdown</button>
+          <button id="breakPromptReset">Reset Countdown</button>
+        </div>
+      </div>
+    
+      <div id="toDo">
+        <h2>To-Do</h2><br>
+        <div id="enter">
+          <input id="inputToDo" type="text">
+        </div>
+        <div id="displayToDo">
+          <ul id="toDoLi">
+    
+          </ul>
+        </div>
+      </div>
+
+    </div>      
+  </div>
         
-    </head>
+  <script src='./script.js' type="text/javascript"></script>
 
-    <body>
-
-        <div id="displayControls">
-            <button id="showCountdownButton">Show Countdown Timer</button>
-            <button id="showToDoButton">Show To-Do Panel</button>
-            <button id="showDebugButton">Show Debug Log</button>
-        </div>
-
-        <h1>Phil's Timer</h1>
-
-        <div id="timers_container">
-
-            <h2>Study</h2>
-
-            <div id="study">
-                <div id="stimers">
-                    <div id="study_total"><p id="study_total_text">05:00:00</p></div>
-                    <div id="study_current"><p id="study_current_text">00:00:00</p></div>
-                </div>
-                <div id="sbuttons">
-                    <img id="study_play" src='./icons/play-solid.svg'/>
-                    <img id="study_pause" src='./icons/pause-solid.svg'/>
-                    <img id="study_reset" src='./icons/redo-solid.svg'/>
-                </div>
-                <div id="spmbuttons">
-                    <img id="splus_one_study" src='./icons/plus-square-regular.svg'/>
-                    <img id="sminus_one_study" src='./icons/minus-square-regular.svg'/>
-                </div>
-            </div>
-
-            <h2>Procrastination</h2>
-
-            <div id="procrastination">
-                <div id="ptimers">
-                    <div id="procrastination_total"><p id="procrastination_total_text">00:00:00</p></div>
-                    <div id="procrastination_current"><p id="procrastination_current_text">00:00:00</p></div>
-                </div>
-                <div id="pbuttons">
-                    <img id="procrastination_play" src='./icons/play-solid.svg'/>
-                    <img id="procrastination_pause" src='./icons/pause-solid.svg'/>
-                    <img id="procrastination_reset" src='./icons/redo-solid.svg'/>
-                </div>
-                <div id="ppmbuttons">
-                    <img id="pplus_one_study" src='./icons/plus-square-regular.svg'/>
-                    <img id="pminus_one_study" src='./icons/minus-square-regular.svg'/>
-                </div>
-            </div>
-
-            <h2>Break</h2>
-
-            <div id="break">
-                <div id="btimers">
-                    <div id="break_total"><p id="break_total_text">00:00:00</p></div>
-                    <div id="break_current"><p id="break_current_text">00:00:00</p></div>
-                </div>
-                <div id="bbuttons">
-                    <img id="break_play" src='./icons/play-solid.svg'/>
-                    <img id="break_pause" src='./icons/pause-solid.svg'/>
-                    <img id="break_reset" src='./icons/redo-solid.svg'/>
-                </div>
-                <div id="bpmbuttons">
-                    <img id="bplus_one_study" src='./icons/plus-square-regular.svg'/>
-                    <img id="bminus_one_study" src='./icons/minus-square-regular.svg'/>
-                </div>
-            </div>
-
-            <div id="start_buttons">
-                <div id="start_study">Start Study</div>
-                <div id="start_procrastination">Start Procrastination</div>
-                <div id="start_break">Start Break</div>
-            </div>
-
-            <div id="countdownDiv">
-                <div id="breakPrompt"></div>
-                <div id="countdownControls">
-                    <button id="breakPromptStart">Start Countdown</button>
-                    <button id="breakPromptPause">Pause Countdown</button>
-                    <button id="breakPromptReset">Reset Countdown</button>
-                </div>
-                <div id="countdownErrorDiv">???</div>
-            </div>
-
-            <div id="toDo">
-                <h2>To-Do</h2><br>
-                <div id="enter">
-                    <input id="inputToDo" type="text">
-                </div>
-                <div id="displayToDo">
-                    <ul id="toDoLi">
-
-                    </ul>
-                </div>
-            </div>
-
-            
-        </div>
-
-        <script src='./script.js' type="text/javascript"></script>
-
-    </body>
+</body>
 
 
 

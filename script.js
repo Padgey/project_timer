@@ -16,15 +16,15 @@ const timeToString = time => {
 };
 
 function setTitle() {
-    document.title = timeToString(sElapsedTime + sTotalTime)
+    document.title = timeToString(sTimeLeft - sElapsedTime)
 };
 
 const showCountdownButton = document.getElementById("showCountdownButton");
-const showDebugButton = document.getElementById("showDebugButton");
+const showStudyCountdownButton = document.getElementById("showStudyCountdown");
 const showToDoButton = document.getElementById("showToDoButton");
 const breakPromptDiv = document.getElementById("breakPrompt");
 const countdownDiv = document.getElementById("countdownDiv");
-const countdownErrorDiv = document.getElementById("countdownErrorDiv");
+const studyCountdownDiv = document.getElementById("studyCountdownDiv");
 const toDoDiv = document.getElementById("toDo");
 
 countdownDiv.style.display = "none";
@@ -39,11 +39,11 @@ function showCountdown() {
     }
 };
 
-function showDebug() {
-    if (countdownErrorDiv.style.display === "none") {
-        countdownErrorDiv.style.display = "block"
+function showStudyCountdown() {
+    if (studyCountdownDiv.style.display === "none") {
+        studyCountdownDiv.style.display = "block"
     } else {
-        countdownErrorDiv.style.display = "none"
+        studyCountdownDiv.style.display = "none"
     }
 }
 
@@ -56,7 +56,7 @@ function showToDo() {
 }
 
 showCountdownButton.addEventListener("click", showCountdown);
-showDebugButton.addEventListener("click", showDebug);
+showStudyCountdownButton.addEventListener("click", showStudyCountdown);
 showToDoButton.addEventListener("click", showToDo);
 
 
@@ -73,7 +73,6 @@ let countdownInterval;
 let timeToPrompt;
 
 breakPromptDiv.innerText = timeToString(initialTimeToPrompt);
-countdownErrorDiv.innerText = countdownStatus;
 
 
 function countdownPrint(txt) {

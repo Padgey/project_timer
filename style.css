@@ -1,13 +1,4 @@
 /* 04080F  507DBC   A1C6EA   BBD1EA   DAE3E5   Colour Scheme*/
-
-/*To do - 
-    Restructure #id and .classes into a format that makes more sense without breaking functionaility.
-    Resize on smaller screens.
-*/
-
-
-
-
 /*General settings*/
 body {
     background-color: #04080F;
@@ -18,27 +9,21 @@ body {
     text-align: center;
 }
 
-
-
-
-
-
-/*Header*/
-h1 {
-    width: 30%;
-    color: #DAE3E5;
-    margin: 2px auto;
-    padding: 10px;
-    text-align: center;
-    font-size: 2rem;
+#overall_container {
+    display: flex;
+    flex-direction: column;
 }
 
+#showCountdownButton, #showToDoButton {
+    float: left;
+}
 
-
-
+#showStudyCountdown, #studyCountdownDiv {
+    float: right;
+}
 
 /*All timers*/
-#timers_container {
+#displayControls, #timers_container {
     width: 100%;
 }
 
@@ -369,20 +354,11 @@ h2 {
     width: 100%;
 }
 
-#showCountdownButton, #showToDoButton {
-    float: left;
-}
-
-#showDebugButton {
-    float: right;
-}
-
 /*Countdown Controls*/
 
-#countdownDiv, #countdownErrorDiv {
+#countdownDiv, #studyCountdownDiv, #toDo {
     display: none;
 }
-
 
 #breakPrompt {
     margin: 5px;
