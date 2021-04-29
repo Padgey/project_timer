@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-
 <html>
+
 <head>
+  <title>Phil's Timer</title>
   <link href="./style.css" type="text/css" rel="stylesheet">
-  <!--<script src="https://kit.fontawesome.com/dbc33ffd90.js" crossorigin="anonymous"></script>-->
-  <title>Phil's Timer</title>        
+  <script async="async" src='./script.js' type="text/javascript"></script>        
 </head>
 <body>
   <div id="overall_container">
@@ -15,8 +15,8 @@
       <button id="showStudyCountdown">Set Study Countdown</button>
       <div id="studyCountdownDiv">
         <form>
-          <input type="time">
-          <input type="submit">
+          <input name="myTime" action="" method="" type="time">
+          <input type="button" name="myTimeButton" Value="Click" onClick="setMyTime(this.form)">
         </form>
       </div>
     </div>
@@ -104,31 +104,9 @@
     </div>      
   </div>
         
-  <script src='./script.js' type="text/javascript"></script>
+  
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
 
