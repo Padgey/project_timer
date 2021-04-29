@@ -132,25 +132,16 @@ function countdownTimer() {
     if (countdownStatus === "Stopped") {
         countdownStartTime = Date.now();
         countdownStatus = "Running";
-        countdownErrorDiv.innerText = countdownStatus;
         countdownInterval = setInterval(function countdownTimer() {
             countdownElapsed = Date.now() - countdownStartTime;
             timeToPrompt = totalTimeToPrompt - countdownElapsed;
             countdownPrint(timeToString(timeToPrompt));
         }, 100);
-    } else if (countdownStatus === "Running") {
-        countdownErrorDiv.innerText = "Cannot start timer which is already running";
-        setTimeout(() => {
-            countdownErrorDiv.innerText = countdownStatus;
-        }, 1500);
-    } else {
-        countdownErrorDiv.innerText = "This error should not appear!";
     }
 };
 function countdownPause() {
     clearInterval(countdownInterval);
     countdownStatus = "Stopped";
-    countdownErrorDiv.innerText = countdownStatus;
     totalTimeToPrompt = totalTimeToPrompt - countdownElapsed;
     countdownElapsed = 0;
 };
@@ -164,7 +155,6 @@ function countdownStop() {
 function countdownReset() {
     clearInterval(countdownInterval);
     countdownStatus = "Stopped";
-    countdownErrorDiv.innerText = countdownStatus;
     totalTimeToPrompt = initialTimeToPrompt;
     timeToPrompt = initialTimeToPrompt;
     countdownElapsed = 0;
