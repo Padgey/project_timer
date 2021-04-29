@@ -18,34 +18,28 @@ const sCurrentTimer = document.getElementById("study_current_text");
 const sPlayButton = document.getElementById("study_play");
 const sPauseButton = document.getElementById("study_pause");
 const sResetButton = document.getElementById("study_reset");
-const sAddMinuteButton = document.getElementById("splus_one_study");
-const sSubtractMinuteButton = document.getElementById("sminus_one_study");
+const sAddMinuteButton = document.getElementById("s_plus_one");
+const sSubtractMinuteButton = document.getElementById("s_minus_one");
 
 const pTotalTimer = document.getElementById("procrastination_total_text");
 const pCurrentTimer = document.getElementById("procrastination_current_text");
 const pPlayButton = document.getElementById("procrastination_play");
 const pPauseButton = document.getElementById("procrastination_pause");
 const pResetButton = document.getElementById("procrastination_reset");
-const pAddMinuteButton = document.getElementById("pplus_one_study");
-const pSubtractMinuteButton = document.getElementById("pminus_one_study");
+const pAddMinuteButton = document.getElementById("p_plus_one");
+const pSubtractMinuteButton = document.getElementById("p_minus_one");
 
 const bTotalTimer = document.getElementById("break_total_text");
 const bCurrentTimer = document.getElementById("break_current_text");
 const bPlayButton = document.getElementById("break_play");
 const bPauseButton = document.getElementById("break_pause");
 const bResetButton = document.getElementById("break_reset");
-const bAddMinuteButton = document.getElementById("bplus_one_study");
-const bSubtractMinuteButton = document.getElementById("bminus_one_study");
+const bAddMinuteButton = document.getElementById("b_plus_one");
+const bSubtractMinuteButton = document.getElementById("b_minus_one");
 
 const startStudyButton = document.getElementById('start_study');
 const startProcrastinationButton = document.getElementById('start_procrastination');
 const startBreakButton = document.getElementById('start_break');
-
-
-
-
-
-
 
 
 //Global Variables ////////////////////////////////////////////
@@ -77,6 +71,7 @@ let bElapsedTime = 0;
 let bTimerInterval;
 let bTotalTime = 0;
 
+
 //Helper Functions ////////////////////////////////////////////
 function timeToString(time) {
     let diffInHrs = time / 3600000;
@@ -98,19 +93,20 @@ function setTitle() {
     document.title = timeToString(sTotalTime + sElapsedTime);
 };
 
+
 //Display Controls ////////////////////////////////////////////
 function showCountdown() {
-    if (countdownDiv.style.display === "none") {
-        countdownDiv.style.display = "block"
-    } else {
+    if (countdownDiv.style.display === "block") {
         countdownDiv.style.display = "none"
+    } else {
+        countdownDiv.style.display = "block"
     }
 };
 function showToDo() {
-    if (toDoDiv.style.display === "none") {
-        toDoDiv.style.display = "block"
-    } else {
+    if (toDoDiv.style.display === "block") {
         toDoDiv.style.display = "none"
+    } else {
+        toDoDiv.style.display = "block"
     }
 };
 function showStudyCountdown() {
@@ -120,6 +116,8 @@ function showStudyCountdown() {
         studyCountdownDiv.style.display = "block"
     }
 };
+
+
 //CountdownBreakPrompt ////////////////////////////////////////
 breakPromptDiv.innerText = timeToString(initialTimeToPrompt);
 
@@ -173,6 +171,7 @@ function countdownReset() {
     countdownPrint(timeToString(totalTimeToPrompt));
 };
 
+
 //Study Stopwatch /////////////////////////////////////////////
 function sPrint(txt) {
     sCurrentTimer.innerHTML = txt;
@@ -208,6 +207,7 @@ function sSubtractMinute() {
     sTimeLeft = sTimeLeft + 60000;
     sTotalPrint(timeToString(sTimeLeft));
 };
+
 
 //Procrastination Stopwatch ///////////////////////////////////
 function pPrint(txt) {
@@ -248,6 +248,7 @@ function pSubtractMinute() {
     pTotalPrint(timeToString(pTotalTime));
 };
 
+
 //Break Stopwatch /////////////////////////////////////////////
 function bPrint(txt) {
     bCurrentTimer.innerHTML = txt;
@@ -287,6 +288,7 @@ function bSubtractMinute() {
     bTotalPrint(timeToString(bTotalTime));
 };
 
+
 //Start Buttons ///////////////////////////////////////////////
 function startStudy() {
     pReset();
@@ -306,6 +308,7 @@ function startBreak() {
     bReset();
     bStart();
 };
+
 
 //To-Do List //////////////////////////////////////////////////
 function addNewElement() {
@@ -336,6 +339,7 @@ function addNewElement() {
         }
     };
 };
+
 
 //Event Listeners /////////////////////////////////////////////
 showCountdownButton.addEventListener("click", showCountdown);

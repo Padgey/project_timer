@@ -1,5 +1,4 @@
-/* 04080F  507DBC   A1C6EA   BBD1EA   DAE3E5   Colour Scheme*/
-/*General settings*/
+/* GeneralSettings *******************************************************/
 body {
     background-color: #04080F;
     color: #DAE3E5;
@@ -8,69 +7,92 @@ body {
     font-size: 16px;
     text-align: center;
 }
-
 #overall_container {
     display: flex;
     flex-direction: column;
 }
-
-#showCountdownButton, #showToDoButton {
-    float: left;
-}
-
-#showStudyCountdown, #studyCountdownDiv {
-    float: right;
-}
-
-/*All timers*/
 #displayControls, #timers_container {
     width: 100%;
 }
-
 h2 {
     margin-top: 20px;
     margin-bottom: 4px;
 }
 
 
+/* DisplayControls *******************************************************/
+#displayControls {
+    width: 100%;
+}
+#showCountdownButton, #showToDoButton {
+    float: left;
+}
+#showStudyCountdown, #studyCountdownDiv {
+    float: right;
+}
 
+/* CountdownBreakPrompt ***************************************************/
+#countdownDiv, #studyCountdownDiv, #toDo {
+    display: none;
+}
+#breakPrompt {
+    margin: 5px;
+    font-size: 3rem;
+}
+#countdownControls {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#breakPromptStart, #breakPromptPause, #breakPromptReset {
+    font-size: 1rem;
+}
+#breakPromptStart {
+    background-color: #507DBC;
+}
+#breakPromptPause {
+    background-color: #ec4c4c;
+}
+#breakPromptReset {
+    background-color: #50bc5e;
+}
 
-/*Study Timer*/
+/* ToDo ********************************************************************/
+#addToDo {
+    cursor: pointer;
+}
+.close {
+    padding: 12px 16px 12px 16px;
+}
+
+/* StudyTimer */
 #study {
     display: flex;
     max-width: 80%;
     margin: 0 auto;
 }
-
-#stimers {
+#sTimers {
     display: flex;
     width: 65%;
     z-index: 3;
 }
-
 #study_total, #study_current {
     padding: 10px 25px;
     width: 50%;
     background-color: #507DBC;
 }
-
 #study_total {
     border-right: 0.5px solid black;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-
 #study_current {
     border-right: 1px solid black
 }
-
-
 #study_total p, #study_current p{
     display: inline;
     font-size: 3rem;
 }
-
-#sbuttons {
+#sButtons {
     display: flex;
     width: 35%;
     font-size: 1.5rem;
@@ -80,12 +102,10 @@ h2 {
     border-bottom-right-radius: 25px;
     z-index: 3;
 }
-
-#sbuttons img {
+#sButtons img {
     padding: 10px;
     cursor: pointer;
 }
-
 #study_play, #study_pause, #study_reset {
     margin: 0 auto;
     border: 5px solid rgba(0, 0, 0, 1);
@@ -93,52 +113,58 @@ h2 {
     max-height: 15px;
     width: auto;
 }
+#sPMButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    left: 88%;
+}
+#s_plus_one, #s_minus_one {
+    cursor: pointer;
+    padding: 10px 5px 10px 40px;
+    background-color: #29528b;
+    border-radius: 10px;
+    pointer-events: auto;
+    height: 16px;
+}
+#s_plus_one {
+    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
+}
+#s_minus_one {
+    border-top: 0.75px solid rgba(0, 0, 0, 1);
+}
 
-
-
-
-
-
-
-
-
-/*Procrastination timer*/
-
+/* ProcrastinationTimer */
 #procrastination {
     display: flex;
     max-width: 80%;
     margin: 0 auto;
 }
-
-#ptimers {
+#pTimers {
     display: flex;
     width: 65%;
     z-index: 3;
 }
-
 #procrastination_total, #procrastination_current {
     padding: 10px 25px;
     width: 50%;
     background-color: #ec4c4c;
 }
-
 #procrastination_total {
     border-right: 0.5px solid black;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-
 #procrastination_current {
     border-right: 1px solid black
 }
-
-
 #procrastination_total p, #procrastination_current p{
     display: inline;
     font-size: 3rem;
 }
-
-#pbuttons {
+#pButtons {
     display: flex;
     width: 35%;
     font-size: 1.5rem;
@@ -148,12 +174,10 @@ h2 {
     border-bottom-right-radius: 25px;
     z-index: 3;
 }
-
-#pbuttons img {
+#pButtons img {
     padding: 10px;
     cursor: pointer;
 }
-
 #procrastination_play, #procrastination_pause, #procrastination_reset {
     margin: 0 auto;
     border: 5px solid rgba(0, 0, 0, 1);
@@ -161,46 +185,58 @@ h2 {
     max-height: 15px;
     width: auto;
 }
+#pPMButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    left: 88%;
+}
+#p_plus_one, #p_minus_one {
+    cursor: pointer;
+    padding: 10px 5px 10px 40px;
+    background-color: #7e2929;
+    border-radius: 10px;
+    pointer-events: auto;
+    height: 16px;
+}
+#p_plus_one {
+    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
+}
+#p_minus_one {
+    border-top: 0.75px solid rgba(0, 0, 0, 1);
+}
 
-
-
-
-/*Break Timer*/
+/* BreakTimer */
 #break {
     display: flex;
     max-width: 80%;
     margin: 0 auto;
 }
-
-#btimers {
+#bTimers {
     display: flex;
     width: 65%;
     z-index: 3;
 }
-
 #break_total, #break_current {
     padding: 10px 25px;
     width: 50%;
     background-color: #50bc5e;
 }
-
 #break_total {
     border-right: 0.5px solid black;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-
 #break_current {
     border-right: 1px solid black
 }
-
-
 #break_total p, #break_current p{
     display: inline;
     font-size: 3rem;
 }
-
-#bbuttons {
+#bButtons {
     display: flex;
     width: 35%;
     font-size: 1.5rem;
@@ -210,12 +246,10 @@ h2 {
     border-bottom-right-radius: 25px;
     z-index: 3;
 }
-
-#bbuttons img {
+#bButtons img {
     padding: 10px;
     cursor: pointer;
 }
-
 #break_play, #break_pause, #break_reset {
     margin: 0 auto;
     border: 5px solid rgba(0, 0, 0, 1);
@@ -223,20 +257,34 @@ h2 {
     max-height: 15px;
     width: auto;
 }
+#bPMButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    left: 88%;
+}
+#b_plus_one, #b_minus_one {
+    cursor: pointer;
+    padding: 10px 5px 10px 40px;
+    background-color: #0a802a;
+    border-radius: 10px;
+    pointer-events: auto;
+    height: 16px;
+}
+#b_plus_one {
+    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
+}
+#b_minus_one {
+    border-top: 0.75px solid rgba(0, 0, 0, 1);
+}
 
-
-
-
-
-
-
-/*Start buttons*/
-
+/* StartButtons */
 #start_buttons {
     display: flex;
     justify-content: center;
 }
-
 #start_study, #start_procrastination, #start_break {
     padding: 15px;
     margin: 40px 10px;
@@ -247,156 +295,18 @@ h2 {
     border-radius: 20px;
     color: black;
 }
-
 #start_study {
     background-color: #507DBC;
 }
-
 #start_procrastination {
     background-color: #ec4c4c;
 }
-
 #start_break {
     background-color: #50bc5e
 }
 
 
-/*Plus & minus minute buttons*/
 
-/*Study Plus&Minus Buttons*/
-#spmbuttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
-    position: absolute;
-    left: 88%;
-}
-
-#splus_one_study, #sminus_one_study {
-    cursor: pointer;
-    padding: 10px 5px 10px 40px;
-    background-color: #29528b;
-    border-radius: 10px;
-    pointer-events: auto;
-    height: 16px;
-}
-
-#splus_one_study {
-    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
-}
-
-#sminus_one_study {
-    border-top: 0.75px solid rgba(0, 0, 0, 1);
-}
-
-
-
-/*Procrastination Plus&Minus Buttons*/
-#ppmbuttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
-    position: absolute;
-    left: 88%;
-}
-
-#pplus_one_study, #pminus_one_study {
-    cursor: pointer;
-    padding: 10px 5px 10px 40px;
-    background-color: #7e2929;
-    border-radius: 10px;
-    pointer-events: auto;
-    height: 16px;
-}
-
-#pplus_one_study {
-    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
-}
-
-#pminus_one_study {
-    border-top: 0.75px solid rgba(0, 0, 0, 1);
-}
-
-
-
-/*Break Plus&Minus Buttons*/
-#bpmbuttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
-    position: absolute;
-    left: 88%;
-}
-
-#bplus_one_study, #bminus_one_study {
-    cursor: pointer;
-    padding: 10px 5px 10px 40px;
-    background-color: #0a802a;
-    border-radius: 10px;
-    pointer-events: auto;
-    height: 16px;
-}
-
-
-#bplus_one_study {
-    border-bottom: 0.75px solid rgba(0, 0, 0, 1);
-}
-
-#bminus_one_study {
-    border-top: 0.75px solid rgba(0, 0, 0, 1);
-}
-
-/*Display Controls*/
-#displayControls {
-    width: 100%;
-}
-
-/*Countdown Controls*/
-
-#countdownDiv, #studyCountdownDiv, #toDo {
-    display: none;
-}
-
-#breakPrompt {
-    margin: 5px;
-    font-size: 3rem;
-}
-
-#countdownControls {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-#breakPromptStart, #breakPromptPause, #breakPromptReset {
-    font-size: 1rem;
-}
-
-#breakPromptStart {
-    background-color: #507DBC;
-}
-
-#breakPromptPause {
-    background-color: #ec4c4c;
-}
-
-#breakPromptReset {
-    background-color: #50bc5e;
-}
-
-
-
-/*To-do List*/
-
-#addToDo {
-    cursor: pointer;
-}
-
-.close {
-    padding: 12px 16px 12px 16px;
-}
 
 
 
@@ -443,11 +353,11 @@ h2 {
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
     }
-    #sbuttons, #pbuttons, #bbuttons {
+    #sButtons, #pButtons, #bButtons {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
     }
-    #sbuttons i, #pbuttons i, #bbuttons i {
+    #sButtons i, #pButtons i, #bButtons i {
         padding: 10px;
     }
     #start_study, #start_procrastination, #start_break {
@@ -456,7 +366,7 @@ h2 {
         height: 25px;
         border-radius: 0px;
     }
-    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+    #s_plus_one, #s_minus_one, #p_plus_one, #p_minus_one, #b_plus_one, #b_minus_one {
         padding: 5px 5px 5px 30px;
         border-radius: 0px;
     }
@@ -473,13 +383,13 @@ h2 {
     #study_play, #study_pause, #study_reset, #procrastination_play, #procrastination_pause, #procrastination_reset, #break_play, #break_pause, #break_reset {
         border: 4px solid rgba(0, 0, 0, 1);
     }
-    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+    #s_plus_one, #s_minus_one, #p_plus_one, #p_minus_one, #b_plus_one, #b_minus_one {
         padding: 3px 5px 3px 30px;
     }
-    #splus_one_study, #pplus_one_study, #bplus_one_study  {
+    #s_plus_one, #p_plus_one, #b_plus_one  {
         border-bottom: 1.5px solid rgba(0, 0, 0, 1);
     }
-    #sminus_one_study, #pminus_one_study, #bminus_one_study {
+    #s_minus_one, #p_minus_one, #b_minus_one {
         border-top: 1.5px solid rgba(0, 0, 0, 1);
     }
 }
@@ -497,16 +407,16 @@ h2 {
     #study, #procrastination, #break {
         max-width: 90%;
     }   
-    #sbuttons i, #pbuttons i, #bbuttons i {
+    #sButtons i, #pButtons i, #bButtons i {
         padding: 5px;
     }
-    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+    #s_plus_one, #s_minus_one, #p_plus_one, #p_minus_one, #b_plus_one, #b_minus_one {
         padding: 2px 5px 1px 35px;
     }
-    #splus_one_study, #pplus_one_study, #bplus_one_study  {
+    #s_plus_one, #p_plus_one, #b_plus_one  {
         border-bottom: 2px solid rgba(0, 0, 0, 1);
     }
-    #sminus_one_study, #pminus_one_study, #bminus_one_study {
+    #s_minus_one, #p_minus_one, #b_minus_one {
         border-top: 2px solid rgba(0, 0, 0, 1);
     }
     #start_study, #start_procrastination, #start_break {
@@ -516,7 +426,7 @@ h2 {
     }
 }
 
-@media screen and (max-height : 425px) {
+@media screen and (max-height : 425px) and (max-width : 540px) {
     html {
         font-size: 6px;
     }
@@ -529,16 +439,16 @@ h2 {
     #study, #procrastination, #break {
         max-width: 90%;
     }   
-    #sbuttons i, #pbuttons i, #bbuttons i {
+    #sButtons i, #pButtons i, #bButtons i {
         padding: 5px;
     }
-    #splus_one_study, #sminus_one_study, #pplus_one_study, #pminus_one_study, #bplus_one_study, #bminus_one_study {
+    #s_plus_one, #s_minus_one, #p_plus_one, #p_minus_one, #b_plus_one, #b_minus_one {
         padding: 0px 5px 0px 35px;
     }
-    #splus_one_study, #pplus_one_study, #bplus_one_study  {
+    #s_plus_one, #p_plus_one, #b_plus_one  {
         border-bottom: 2px solid rgba(0, 0, 0, 1);
     }
-    #sminus_one_study, #pminus_one_study, #bminus_one_study {
+    #s_minus_one, #p_minus_one, #b_minus_one {
         border-top: 2px solid rgba(0, 0, 0, 1);
     }
     #start_study, #start_procrastination, #start_break {
