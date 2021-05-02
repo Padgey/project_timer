@@ -10,13 +10,14 @@
   <div id="overall_container">
 
     <div id="displayControls">
-      <button id="showCountdownButton">Show Countdown Timer</button>
+      <button id="showBreakCountdownButton">Show Break Timer</button>
       <button id="showToDoButton">Show To-Do Panel</button>
       <button id="showStudyCountdown">Set Study Countdown</button>
       <div id="studyCountdownDiv">
         <form>
-          <input name="myTime" action="" method="" type="time">
-          <input type="button" name="myTimeButton" Value="Click" onClick="setMyTime(this.form)">
+          <input id="resetMyTimeButton" class="study_countdown_button" type="button" Value="Reset Countdown Time">
+          <input id="addMyTimeButton" class="study_countdown_button" type="button" Value="+ 30mins Countdown">
+          <input id="myTimeButton" class="study_countdown_button" type="button" Value="Change Mode">          
         </form>
       </div>
     </div>
@@ -79,9 +80,9 @@
         <div id="start_break" class="start_button">Start Break</div>
       </div>
     
-      <div id="countdownDiv">
+      <div id="breakCountdownDiv">
         <div id="breakPrompt"></div>
-        <div id="countdownControls">
+        <div id="breakCountdownControls">
           <button id="breakPromptStart">Start Countdown</button>
           <button id="breakPromptPause">Pause Countdown</button>
           <button id="breakPromptReset">Reset Countdown</button>

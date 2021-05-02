@@ -1,6 +1,6 @@
 //DOM Structure ///////////////////////////////////////////////
-const showCountdownButton = document.getElementById("showCountdownButton");
-const countdownDiv = document.getElementById("countdownDiv");
+const showBreakCountdownButton = document.getElementById("showBreakCountdownButton");
+const breakCountdownDiv = document.getElementById("breakCountdownDiv");
 const breakPromptDiv = document.getElementById("breakPrompt");
 const breakPromptStart = document.getElementById("breakPromptStart");
 const breakPromptPause = document.getElementById("breakPromptPause");
@@ -12,6 +12,9 @@ const toDoLi = document.getElementById('toDoLi');
 
 const showStudyCountdownButton = document.getElementById("showStudyCountdown");
 const studyCountdownDiv = document.getElementById("studyCountdownDiv");
+const myTimeButton = document.getElementById("myTimeButton");
+const addMyTimeButton = document.getElementById("addMyTimeButton");
+const resetMyTimeButton = document.getElementById("resetMyTimeButton");
 
 const sTotalTimer = document.getElementById("study_total_text");
 const sCurrentTimer = document.getElementById("study_current_text");
@@ -56,20 +59,21 @@ let timeToPrompt;
 let sStartTime;
 let sElapsedTime = 0;
 let sTimerInterval;
-let sTimeLeft;
 let sTotalTime = 0;
+let sTimeLeft = 1800000;
+let sMode = "Stopwatch";
 
 //Procrastination Stopwatch
 let pStartTime;
 let pElapsedTime = 0;
-let pTimerInterval;
 let pTotalTime = 0;
+let pTimerInterval;
 
 //Break Stopwatch
 let bStartTime;
 let bElapsedTime = 0;
-let bTimerInterval;
 let bTotalTime = 0;
+let bTimerInterval;
 
 
 //Helper Functions ////////////////////////////////////////////
@@ -93,13 +97,12 @@ function setTitle() {
     document.title = timeToString(sTotalTime + sElapsedTime);
 };
 
-
 //Display Controls ////////////////////////////////////////////
 function showCountdown() {
-    if (countdownDiv.style.display === "block") {
-        countdownDiv.style.display = "none"
+    if (breakCountdownDiv.style.display === "block") {
+        breakCountdownDiv.style.display = "none"
     } else {
-        countdownDiv.style.display = "block"
+        breakCountdownDiv.style.display = "block"
     }
 };
 function showToDo() {
@@ -125,7 +128,7 @@ function countdownPrint(txt) {
     if (timeToPrompt > 0) {
         breakPromptDiv.innerText = txt;
     } else {
-        breakPromptDiv.innerText = "Time to stretch and rest your eyes!"
+        breakPromptDiv.innerText = "Time to stretch and rest your eyes!";
     }
 };
 function countdownTimer() {
@@ -161,6 +164,135 @@ function countdownReset() {
     countdownPrint(timeToString(totalTimeToPrompt));
 };
 
+//Change Timer Mode ///////////////////////////////////////////
+function switchMode() {
+    if (sMode === "Stopwatch") {
+        //Stop the timer first
+        sReset();
+        //Print the new mode                               
+        sTotalPrint(timeToString(sTimeLeft));
+        //Change all the buttons to the new mode
+        changeToCountdownModeButtons();
+        //Keep track of what mode we are in
+        sMode = "Countdown";
+        console.log(`sMode: ${sMode}`)
+    } else {
+        //Stop the timer first
+        sResetAlternate();
+        //Print the new mode   
+        sTotalPrint(timeToString(sTotalTime));
+        //Change all the buttons to the new mode
+        changeToStopwatchModeButtons();
+        //Keep track of what mode we are in
+        sMode = "Stopwatch";
+        console.log(`sMode: ${sMode}`)
+    }
+};
+function changeToCountdownModeButtons() {
+    startStudyButton.removeEventListener("click", startStudy);
+    startProcrastinationButton.removeEventListener("click", startProcrastination);
+    startBreakButton.removeEventListener("click", startBreak);
+
+    startStudyButton.addEventListener("click", startStudyAlternate);
+    startProcrastinationButton.addEventListener("click", startProcrastinationAlternate);
+    startBreakButton.addEventListener("click", startBreakAlternate);
+
+    sPlayButton.removeEventListener("click", sStart);
+    sResetButton.removeEventListener("click", sReset);
+
+    sPlayButton.addEventListener("click", sStartAlternate);
+    sResetButton.addEventListener("click", sResetAlternate);
+
+    sAddMinuteButton.removeEventListener("click", sAddMinute);
+    sSubtractMinuteButton.removeEventListener("click", sSubtractMinute);
+
+    sAddMinuteButton.addEventListener("click", sAddMinuteAlternate);
+    sSubtractMinuteButton.addEventListener("click", sSubtractMinuteAlternate);
+};
+function changeToStopwatchModeButtons() {
+    startStudyButton.removeEventListener("click", startStudyAlternate);
+    startProcrastinationButton.removeEventListener("click", startProcrastinationAlternate);
+    startBreakButton.removeEventListener("click", startBreakAlternate);
+
+    startStudyButton.addEventListener("click", startStudy);
+    startProcrastinationButton.addEventListener("click", startProcrastination);
+    startBreakButton.addEventListener("click", startBreak);
+
+    sPlayButton.removeEventListener("click", sStartAlternate);
+    sResetButton.removeEventListener("click", sResetAlternate);
+
+    sPlayButton.addEventListener("click", sStart);
+    sResetButton.addEventListener("click", sReset);
+
+    sAddMinuteButton.removeEventListener("click", sAddMinuteAlternate);
+    sSubtractMinuteButton.removeEventListener("click", sSubtractMinuteAlternate);
+
+    sAddMinuteButton.addEventListener("click", sAddMinute);
+    sSubtractMinuteButton.addEventListener("click", sSubtractMinute);
+};
+function startStudyAlternate () {
+    pReset();
+    bReset();
+    sResetAlternate();
+    sStartAlternate();
+};
+function startProcrastinationAlternate () {
+    sResetAlternate();
+    bReset();
+    pReset();
+    pStart();
+};
+function startBreakAlternate () {
+    pReset();
+    sResetAlternate();
+    bReset();
+    bStart();
+};
+function sStartAlternate() {
+    sStartTime = Date.now() - sElapsedTime;
+    
+    sTimerInterval = setInterval(function printTime() {
+        sElapsedTime = Date.now() - sStartTime;
+        sPrint(timeToString(sElapsedTime));
+        sTotalPrint(timeToString(sTimeLeft - sElapsedTime));
+        setTitle();
+    }, 100);
+};
+function sResetAlternate() {
+    clearInterval(sTimerInterval);
+    sPrint("00:00:00");
+    sTimeLeft = sTimeLeft - sElapsedTime;
+    sTotalPrint(timeToString(sTimeLeft));
+    sElapsedTime = 0;
+};
+function sAddMinuteAlternate() {
+    sTimeLeft = sTimeLeft + 60000;
+    sTotalPrint(timeToString(sTimeLeft));
+};
+function sSubtractMinuteAlternate() {
+    sTimeLeft = sTimeLeft - 60000;
+    sTotalPrint(timeToString(sTimeLeft));
+};
+function addMyTime() {
+    if (sMode === "Stopwatch") {
+        switchMode();
+        sTimeLeft = sTimeLeft + 1800000;
+        sTotalPrint(timeToString(sTimeLeft));
+    } else {
+        sTimeLeft = sTimeLeft + 1800000;
+        sTotalPrint(timeToString(sTimeLeft));
+    }
+};
+function resetMyTime() {
+    if (sMode === "Stopwatch") {
+        switchMode();
+        sTimeLeft = 1800000;
+        sTotalPrint(timeToString(sTimeLeft));
+    } else {
+        sTimeLeft = 1800000;
+        sTotalPrint(timeToString(sTimeLeft));
+    }
+};
 
 //Study Stopwatch /////////////////////////////////////////////
 function sPrint(txt) {
@@ -190,12 +322,12 @@ function sReset() {
     sElapsedTime = 0;
 };
 function sAddMinute() {
-    sTimeLeft = sTimeLeft - 60000;
-    sTotalPrint(timeToString(sTimeLeft));
+    sTotalTime = sTotalTime + 60000;
+    sTotalPrint(timeToString(sTotalTime));
 };
 function sSubtractMinute() {
-    sTimeLeft = sTimeLeft + 60000;
-    sTotalPrint(timeToString(sTimeLeft));
+    sTotalTime = sTotalTime - 60000;
+    sTotalPrint(timeToString(sTotalTime));
 };
 
 
@@ -332,7 +464,7 @@ function addNewElement() {
 
 
 //Event Listeners /////////////////////////////////////////////
-showCountdownButton.addEventListener("click", showCountdown);
+showBreakCountdownButton.addEventListener("click", showCountdown);
 
 showToDoButton.addEventListener("click", showToDo);
 document.querySelector('#inputToDo').addEventListener('keypress', function (e) {
@@ -342,6 +474,9 @@ document.querySelector('#inputToDo').addEventListener('keypress', function (e) {
 });
 
 showStudyCountdownButton.addEventListener("click", showStudyCountdown);
+myTimeButton.addEventListener("click", switchMode);
+addMyTimeButton.addEventListener("click", addMyTime);
+resetMyTimeButton.addEventListener("click", resetMyTime);
 
 breakPromptStart.addEventListener("click", countdownTimer);
 breakPromptPause.addEventListener("click", countdownPause);

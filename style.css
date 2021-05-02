@@ -24,22 +24,29 @@ h2 {
 #displayControls {
     width: 100%;
 }
-#showCountdownButton, #showToDoButton {
+#showBreakCountdownButton, #showToDoButton {
     float: left;
 }
 #showStudyCountdown, #studyCountdownDiv {
     float: right;
 }
+#studyCountdownDiv {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+.study_countdown_button {
+    background-color: rgb(195, 195, 195);
+}
 
-/* CountdownBreakPrompt ***************************************************/
-#countdownDiv, #studyCountdownDiv, #toDo {
+/* BreakCountdownPrompt ***************************************************/
+#breakCountdownDiv, #studyCountdownDiv, #toDo {
     display: none;
 }
 #breakPrompt {
     margin: 5px;
     font-size: 3rem;
 }
-#countdownControls {
+#breakCountdownControls {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -57,6 +64,11 @@ h2 {
 }
 
 /* ToDo ********************************************************************/
+#toDo {
+    float: left;
+    background-color: #fb8e0026;
+    border: 2px solid #fb8e003b;
+}
 #addToDo {
     cursor: pointer;
 }
@@ -122,7 +134,7 @@ h2 {
 }
 .plus_one, .minus_one {
     cursor: pointer;
-    padding: 10px 5px 10px 40px;
+    padding: 10px 5px 10px 55px;
     border-radius: 10px;
     pointer-events: auto;
     height: 16px;
@@ -227,6 +239,12 @@ h2 {
 
 
 /*Small screen adjustments*/
+@media screen and (max-width : 2200px) {
+    .plus_one, .minus_one {
+        padding: 10px 5px 10px 40px;
+    }
+}
+
 @media screen and (max-width : 1000px) {
     html {
     font-size: 10px;
