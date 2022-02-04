@@ -24,3 +24,4 @@ There are three extra functions seen in the navbar tab at the top
 //To-do
 Manual adjustment of the time for the break countdown timer could be added
 Fine adjustment of the time for the study countdown timer could be added
+Change break timer to be modifiable to be custom number rather than set 20 minutes
